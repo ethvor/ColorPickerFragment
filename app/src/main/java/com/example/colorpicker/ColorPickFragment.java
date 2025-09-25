@@ -20,6 +20,9 @@ public class ColorPickFragment extends Fragment {
     private String[] colors;
     private GridLayout grid;
 
+    private ColorsViewModel colorsModel; // THIS IS THE LAST THING WE NEED
+    //FOR THE PART A of HW2: NEED TO INITIALIZE THE MODEL, BUT NOT PASS DATA. JUST LIKE THIS.
+
     private OnMessageSendListener mListener;
 
     private View.OnClickListener buttonListener = new View.OnClickListener() {

@@ -11,13 +11,12 @@
         android:layout_weight="1">
     </androidx.fragment.app.FragmentContainerView>
 
-    <TextView
-        android:id="@+id/textView1"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/listFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="TextView">
-    </TextView>
+        android:layout_weight="1">
+    </androidx.fragment.app.FragmentContainerView>
 
 
 </LinearLayout>
