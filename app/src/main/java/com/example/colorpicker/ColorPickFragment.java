@@ -48,16 +48,22 @@ public class ColorPickFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // get the resources String Array bellow
-        colors = null;
+        colors = getResources().getStringArray(R.array.colors_array);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment here
+        View view = inflater.inflate(R.layout.fragment_color_pick, container, false);
 
+        grid = view.findViewById(R.id.lightGrid);
 
         // set the color of each button here
+        for(int i =0; i < grid.getChildCount(); i++){
+            Button currentButton = (Button) grid.getChildAt(i);
+            currentButton.setBackgroundColor(Color.parseColor(colors[i]));
+        }
 
         // bind the listener to each button
 
@@ -65,6 +71,6 @@ public class ColorPickFragment extends Fragment {
             Button currentButton = (Button) grid.getChildAt(i);
             currentButton.setOnClickListener(buttonListener);
         }
-        return null;
+        return view;
     }
 }
