@@ -4,23 +4,21 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.Toast;
 
 public class ColorPickFragment extends Fragment {
 
     private String[] colors;
     private GridLayout grid;
 
-    private ColorsViewModel colorsModel; // THIS IS THE LAST THING WE NEED
+    private ColorViewModel colorsModel; // THIS IS THE LAST THING WE NEED
     //FOR THE PART A of HW2: NEED TO INITIALIZE THE MODEL, BUT NOT PASS DATA. JUST LIKE THIS.
 
     private OnMessageSendListener mListener;
@@ -29,6 +27,11 @@ public class ColorPickFragment extends Fragment {
         @Override
         public void onClick(View v) {
             int buttonIndex = grid.indexOfChild(v);
+            String currentColor = colors[buttonIndex];
+
+            colorsModel.addColor(currentColor);
+
+
 
         }
     };
@@ -52,6 +55,9 @@ public class ColorPickFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // get the resources String Array bellow
         colors = getResources().getStringArray(R.array.colors_array);
+        colorsModel = new ViewModelProvider(getActivity()).get(ColorViewModel.class);
+
+
     }
 
     @Override

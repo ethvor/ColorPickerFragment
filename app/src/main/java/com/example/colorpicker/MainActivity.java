@@ -1,18 +1,16 @@
 package com.example.colorpicker;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements OnMessageSendListener {
 
     FragmentManager fg;
-    ColorsViewModel colorsModel; // view model custom class defined in java file
+    ColorViewModel colorsModel; // view model custom class defined in java file
 
 
     @Override
@@ -20,6 +18,11 @@ public class MainActivity extends AppCompatActivity implements OnMessageSendList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
+
+            colorsModel = new ViewModelProvider(this).get(ColorViewModel.class); //initialize view model
+            //and attach to activity
+
+
             fg = getSupportFragmentManager(); //get fragment manager
             FragmentTransaction trans = fg.beginTransaction(); //begin fragment transaction
             ColorPickFragment cf = new ColorPickFragment(); //add
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnMessageSendList
             trans.add(R.id.listFragment, cl, "listFrag");
             trans.commit(); //
         }
+
 
 
 
